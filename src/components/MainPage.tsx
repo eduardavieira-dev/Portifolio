@@ -24,7 +24,7 @@ export default function MainPage() {
       />
 
       <div className="relative z-10 text-center max-w-2xl px-6 md:items-center items-start flex flex-col">
-        <h1 className="font-serif text-3xl md:text-[2.5rem] mb-3 md:mb-6 text-start md:text-center">
+        <h1 className="font-serif italic font-medium text-3xl md:text-[2.5rem] mb-3 md:mb-6 text-start md:text-center">
           Olá! Sou a{" "}
           <span className="text-purple-800 dark:text-purple-300 inline-block">
             Eduarda Vieira

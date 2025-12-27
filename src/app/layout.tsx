@@ -44,6 +44,20 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${inter.variable} ${dmSerif.variable} ${pinyonScript.variable} ${nunitoSans.variable}`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const tema = localStorage.getItem('tema');
+                if (tema === 'dark') {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

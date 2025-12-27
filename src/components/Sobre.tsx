@@ -3,7 +3,7 @@ export default function Sobre() {
     <div className="max-w-7xl p-6 md:p-12 flex flex-col md:flex-row gap-8 md:gap-16 items-center justify-center">
       <div>
         <div className="mb-4">
-          <h2 className="font-serif text-3xl md:text-3xl mb-2">Sobre mim</h2>
+          <h2 className="font-serif italic font-medium text-3xl md:text-3xl mb-2">Sobre mim</h2>
           <div className="w-14 h-2 rounded-md bg-pink-300 dark:bg-pink-500"></div>
         </div>
         <p className="text-foreground/80 mb-4 leading-relaxed max-w-2xl">

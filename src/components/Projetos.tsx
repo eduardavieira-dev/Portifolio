@@ -46,7 +46,7 @@ export default function Projetos() {
   return (
     <div className="max-w-7xl p-6 md:p-12 md:px-20 w-full">
       <div className="mb-8">
-        <h2 className="font-serif text-3xl md:text-3xl mb-2">Projetos</h2>
+        <h2 className="font-serif italic font-medium text-3xl md:text-3xl mb-2">Projetos</h2>
         <div className="w-14 h-2 rounded-md bg-pink-300 dark:bg-pink-500"></div>
       </div>
 
@@ -130,7 +130,7 @@ export default function Projetos() {
 
               <div className="p-5">
                 <div className="flex items-center justify-between mb-3">
-                  <h2 className="font-serif text-2xl text-foreground">
+                  <h2 className="font-serif italic font-medium text-2xl text-foreground">
                     {projetoSelecionado.titulo}
                   </h2>
                   {projetoSelecionado.githubUrl && (

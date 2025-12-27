@@ -16,9 +16,22 @@ export default function Navbar() {
     { id: "contato", nome: "Contato" },
   ];
 
+  // Carregar tema do localStorage ao montar o componente
+  useEffect(() => {
+    const temaSalvo = localStorage.getItem("tema");
+    const isDark = temaSalvo === "dark";
+    setTemaEscuro(isDark);
+
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, []);
+
   useEffect(() => {
     const detectarSecao = () => {
-      if (isScrolling) return; 
+      if (isScrolling) return;
 
       const scrollPosition = window.scrollY + 150;
 
@@ -48,8 +61,10 @@ export default function Navbar() {
 
     if (novoTema) {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("tema", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("tema", "light");
     }
   };
 
