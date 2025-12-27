@@ -18,7 +18,7 @@ export default function Contato() {
       `Nome: ${formData.nome}\nEmail: ${formData.email}\n\nMensagem:\n${formData.mensagem}`
     );
 
-    window.location.href = `mailto:eduardavieira@example.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:eduarda.vieira.goncalves7@gmail.com?subject=${subject}&body=${body}`;
 
     setFormData({ nome: "", email: "", mensagem: "" });
   };
@@ -121,7 +121,7 @@ export default function Contato() {
           </h3>
 
           <a
-            href="mailto:eduardavieira@example.com"
+            href="mailto:eduarda.vieira.goncalves7@gmail.com"
             className="flex items-center gap-4 p-4 border border-gray-200 dark:border-neutral-700 rounded-lg hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all"
           >
             <div className="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center">
@@ -130,13 +130,13 @@ export default function Contato() {
             <div>
               <p className="font-alt font-semibold">Email</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                eduardavieira@example.com
+                eduarda.vieira.goncalves7@gmail.com
               </p>
             </div>
           </a>
 
           <a
-            href="https://linkedin.com/in/seu-perfil"
+            href="https://www.linkedin.com/in/eduarda-vieira-gon%C3%A7alves-01a584297/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 p-4 border border-gray-200 dark:border-neutral-700 rounded-lg hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all"
@@ -153,7 +153,7 @@ export default function Contato() {
           </a>
 
           <a
-            href="https://github.com/seu-usuario"
+            href="https://github.com/eduardavieira-dev"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 p-4 border border-gray-200 dark:border-neutral-700 rounded-lg hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all"
