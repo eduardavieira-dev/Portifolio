@@ -44,7 +44,9 @@ export default function RootLayout({
     <html
       lang="pt-BR"
       className={`${inter.variable} ${dmSerif.variable} ${pinyonScript.variable} ${nunitoSans.variable}`}
+      suppressHydrationWarning
     >
+      <title>Eduarda Vieira - Portfólio</title>
       <head>
         <script
           dangerouslySetInnerHTML={{
