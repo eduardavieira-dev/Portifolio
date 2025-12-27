@@ -6,6 +6,7 @@ import {
   Pinyon_Script,
   Nunito_Sans,
 } from "next/font/google";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -58,7 +59,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Toaster position="bottom-right" />
+      </body>
     </html>
   );
 }

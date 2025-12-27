@@ -2,34 +2,82 @@
 
 import { useState } from "react";
 import { Send, Linkedin, Github, Mail } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { toast } from "sonner";
+
+type ContactFormData = {
+  name: string;
+  email: string;
+  message: string;
+};
 
 export default function Contato() {
-  const [formData, setFormData] = useState({
-    nome: "",
-    email: "",
-    mensagem: "",
+  const contactSchema = z.object({
+    name: z
+      .string()
+      .min(1, "Nome é obrigatório")
+      .min(3, "Nome deve ter pelo menos 3 caracteres"),
+    email: z
+      .string()
+      .min(1, "Email é obrigatório")
+      .email("Email inválido"),
+    message: z
+      .string()
+      .min(1, "Mensagem é obrigatória")
+      .min(20, "Mensagem deve ter pelo menos 20 caracteres"),
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const [isLoading, setIsLoading] = useState(false);
 
-    const subject = encodeURIComponent(`Contato de ${formData.nome}`);
-    const body = encodeURIComponent(
-      `Nome: ${formData.nome}\nEmail: ${formData.email}\n\nMensagem:\n${formData.mensagem}`
-    );
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm<ContactFormData>({
+    resolver: zodResolver(contactSchema),
+  });
 
-    window.location.href = `mailto:eduarda.vieira.goncalves7@gmail.com?subject=${subject}&body=${body}`;
+  const onSubmit = async (data: ContactFormData) => {
+    setIsLoading(true);
 
-    setFormData({ nome: "", email: "", mensagem: "" });
-  };
+    try {
+      const response = await fetch(
+        "https://formsubmit.co/ajax/eduarda.vieira.goncalves7@gmail.com",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            message: data.message,
+            _captcha: "false",
+            _template: "table",
+            _subject: "Nova mensagem do portfólio!",
+          }),
+        }
+      );
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+      if (response.ok) {
+        toast.success("Mensagem enviada!", {
+          description: "Obrigada pelo contato! Responderei em breve.",
+        });
+        reset();
+      } else {
+        throw new Error("Failed to send message");
+      }
+    } catch (error) {
+      toast.error("Erro ao enviar mensagem", {
+        description: "Por favor, tente novamente mais tarde.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -46,24 +94,24 @@ export default function Contato() {
             Tem algum projeto em mente ou quer conversar? Envie uma mensagem!
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div>
               <label
-                htmlFor="nome"
+                htmlFor="name"
                 className="block text-sm font-alt font-semibold mb-2"
               >
                 Nome
               </label>
               <input
                 type="text"
-                id="nome"
-                name="nome"
+                id="name"
                 placeholder="Seu nome"
-                value={formData.nome}
-                onChange={handleChange}
-                required
+                {...register("name")}
                 className="w-full px-4 py-2.5 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-500 transition-all"
               />
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+              )}
             </div>
 
             <div>
@@ -76,40 +124,43 @@ export default function Contato() {
               <input
                 type="email"
                 id="email"
-                name="email"
                 placeholder="seu@email.com"
-                value={formData.email}
-                onChange={handleChange}
-                required
+                {...register("email")}
                 className="w-full px-4 py-2.5 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-500 transition-all"
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+              )}
             </div>
 
             <div>
               <label
-                htmlFor="mensagem"
+                htmlFor="message"
                 className="block text-sm font-alt font-semibold mb-2"
               >
                 Mensagem
               </label>
               <textarea
-                id="mensagem"
-                name="mensagem"
+                id="message"
                 placeholder="Digite sua mensagem aqui..."
-                value={formData.mensagem}
-                onChange={handleChange}
-                required
+                {...register("message")}
                 rows={5}
                 className="w-full px-4 py-2.5 border border-gray-300 dark:border-neutral-700 rounded-md bg-white dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-pink-300 dark:focus:ring-pink-500 resize-none transition-all"
               />
+              {errors.message && (
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.message.message}
+                </p>
+              )}
             </div>
 
             <button
               type="submit"
-              className="flex items-center gap-2 px-6 py-3 bg-pink-300 dark:bg-pink-500 text-white font-alt font-semibold rounded-md hover:bg-pink-400 dark:hover:bg-pink-600 transition-colors"
+              disabled={isLoading}
+              className="flex items-center gap-2 px-6 py-3 bg-pink-300 dark:bg-pink-500 text-white font-alt font-semibold rounded-md hover:bg-pink-400 dark:hover:bg-pink-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send size={20} />
-              Enviar Mensagem
+              {isLoading ? "Enviando..." : "Enviar Mensagem"}
             </button>
           </form>
         </div>
