@@ -1,11 +1,9 @@
 "use client";
 import Image from "next/image";
-import { ArrowDown } from "@phosphor-icons/react";
+import { FileText, X } from "@phosphor-icons/react";
+import { useState } from "react";
 export default function MainPage() {
-  const irParaSobre = () => {
-    const secao = document.getElementById("sobre");
-    secao?.scrollIntoView({ behavior: "smooth" });
-  };
+  const [verCurriculo, setVerCurriculo] = useState(false);
   return (
     <main className="min-h-screen flex items-center justify-center relative overflow-hidden md:mt-6">
       <Image
@@ -37,9 +35,13 @@ export default function MainPage() {
           Interfaces Web.
         </p>
 
-        <button onClick={irParaSobre} className="learn-more">
-          Sobre mim
-          <ArrowDown size={20} weight="bold" />
+        <button
+          type="button"
+          onClick={() => setVerCurriculo(true)}
+          className="learn-more"
+        >
+          <FileText size={20} />
+          Ver currículo
         </button>
 
         <style jsx>{`
@@ -62,7 +64,8 @@ export default function MainPage() {
             border: 2px solid #b18597;
             border-radius: 0.75em;
             transform-style: preserve-3d;
-            transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
+            transition:
+              transform 150ms cubic-bezier(0, 0, 0.58, 1),
               background 150ms cubic-bezier(0, 0, 0.58, 1);
           }
 
@@ -77,9 +80,12 @@ export default function MainPage() {
             bottom: 0;
             background: #f9c4d2;
             border-radius: inherit;
-            box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
+            box-shadow:
+              0 0 0 2px #b18597,
+              0 0.625em 0 0 #ffe3e2;
             transform: translate3d(0, 0.75em, -1em);
-            transition: transform 150ms cubic-bezier(0, 0, 0.58, 1),
+            transition:
+              transform 150ms cubic-bezier(0, 0, 0.58, 1),
               box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
           }
 
@@ -89,7 +95,9 @@ export default function MainPage() {
           }
 
           .learn-more:hover::before {
-            box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
+            box-shadow:
+              0 0 0 2px #b18597,
+              0 0.5em 0 0 #ffe3e2;
             transform: translate3d(0, 0.5em, -1em);
           }
 
@@ -99,7 +107,9 @@ export default function MainPage() {
           }
 
           .learn-more:active::before {
-            box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+            box-shadow:
+              0 0 0 2px #b18597,
+              0 0 #ffe3e2;
             transform: translate3d(0, 0, -1em);
           }
 
@@ -118,7 +128,9 @@ export default function MainPage() {
 
           :global(.dark) .learn-more::before {
             background: #872a59;
-            box-shadow: 0 0 0 2px #ae4078, 0 0.625em 0 0 transparent;
+            box-shadow:
+              0 0 0 2px #ae4078,
+              0 0.625em 0 0 transparent;
           }
 
           :global(.dark) .learn-more:hover {
@@ -126,7 +138,9 @@ export default function MainPage() {
           }
 
           :global(.dark) .learn-more:hover::before {
-            box-shadow: 0 0 0 2px #ae4078, 0 0.5em 0 0 transparent;
+            box-shadow:
+              0 0 0 2px #ae4078,
+              0 0.5em 0 0 transparent;
           }
 
           :global(.dark) .learn-more:active {
@@ -134,10 +148,69 @@ export default function MainPage() {
           }
 
           :global(.dark) .learn-more:active::before {
-            box-shadow: 0 0 0 2px #ae4078, 0 0 #872a59;
+            box-shadow:
+              0 0 0 2px #ae4078,
+              0 0 #872a59;
           }
         `}</style>
       </div>
+
+      {verCurriculo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+          onClick={() => setVerCurriculo(false)}
+        >
+          <div
+            className="relative w-full max-w-5xl overflow-hidden rounded-2xl border border-pink-200/60 dark:border-pink-500/30 bg-background/95 shadow-[0_20px_80px_rgba(0,0,0,0.35)]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="flex items-center justify-between px-5 py-4 bg-pink-100 dark:from-pink-500/20 dark:via-background dark:bg-purple-900/10">
+              <div className="flex items-center gap-2">
+                <div className="h-9 w-9 rounded-full bg-white/80 dark:bg-white/10 border border-pink-200/60 dark:border-pink-500/30 flex items-center justify-center">
+                  <FileText size={18} weight="bold" className="text-pink-500" />
+                </div>
+                <div>
+                  <h3 className="font-alt font-semibold leading-tight">
+                    Currículo
+                  </h3>
+                  <p className="text-xs text-foreground/60">
+                    Visualize o PDF e faça o donwload a baixo.
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => setVerCurriculo(false)}
+                className="rounded-full p-2 hover:bg-black/5 dark:hover:bg-white/10 transition-colors"
+                aria-label="Fechar currículo"
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <div className="h-[70vh] w-full bg-muted/20">
+              <iframe
+                src="/curriculo.pdf"
+                title="Currículo"
+                className="h-full w-full"
+              />
+            </div>
+
+            <div className="flex items-center justify-between px-5 py-4 bg-background">
+              <p className="text-xs text-foreground/60">
+                Dica: use zoom do navegador para ajustar a leitura.
+              </p>
+              <a
+                href="/curriculo.pdf"
+                download
+                className="text-sm font-semibold text-pink-500 hover:text-pink-600 transition-colors"
+              >
+                Baixar PDF
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
