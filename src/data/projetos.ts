@@ -11,7 +11,7 @@ export const projetos: Projeto[] = [
     tecnologias: ["HTML", "CSS", "JavaScript", "Node.js", "API REST"],
     imagem: "DudaFlix.png",
     githubUrl: "https://github.com/eduardavieira-dev/eduarda-projeto",
-    // demoUrl: "https://dudaflix.vercel.app", 
+    // demoUrl: "https://dudaflix.vercel.app",
     data: "2024",
   },
   {
@@ -23,8 +23,14 @@ export const projetos: Projeto[] = [
       "Projeto interdisciplinar desenvolvido com HTML, CSS, JavaScript e Node.js, focado em gerenciamento financeiro pessoal e educação financeira. A plataforma auxilia usuários a organizarem seus gastos, acompanharem investimentos e aprenderem mais sobre finanças de forma prática. Inclui dashboards interativos com gráficos em tempo real, categorização automática de despesas e relatórios detalhados.",
     tecnologias: ["HTML", "CSS", "JavaScript", "Node.js", "Charts.js"],
     imagem: "Moneo.png",
+    imagens: [
+      "fullpage/Moneo/Home-Moneo.png",
+      "fullpage/Moneo/Calculadora-Moneo.png",
+      "fullpage/Moneo/Biblioteca-Moneo.png",
+      "fullpage/Moneo/Noticia-Moneo.png",
+    ],
     githubUrl: "https://github.com/eduardavieira-dev/Moneo",
-    // demoUrl: "https://moneo.vercel.app", 
+    // demoUrl: "https://moneo.vercel.app",
     data: "2024",
   },
   {
@@ -34,11 +40,20 @@ export const projetos: Projeto[] = [
       "Plataforma de impacto social que conecta doadores e ONGs facilitando a doação de alimentos.",
     descricaoCompleta:
       "Projeto interdisciplinar desenvolvido no segundo período, com front-end em HTML, CSS e JavaScript e back-end em Spring Boot. A plataforma conecta doadores a organizações sociais, facilitando o repasse de alimentos e promovendo impacto social por meio da tecnologia. Sistema completo de gestão de doações com notificações em tempo real, mapeamento de pontos de coleta e painel administrativo para as ONGs.",
-    tecnologias: ["Spring Boot", "MySQL","HTML", "CSS", "JavaScript"],
+    tecnologias: ["Spring Boot", "MySQL", "HTML", "CSS", "JavaScript"],
     imagem: "FoodBridge.png",
+    imagens: [
+      "fullpage/FoodBridge/secao1.png",
+      "fullpage/FoodBridge/secao2.png",
+      "fullpage/FoodBridge/secao3.png",
+      "fullpage/FoodBridge/DetalhesDaDoacao.png",
+      "fullpage/FoodBridge/MinhasSolicitacoes.png",
+      "fullpage/FoodBridge/avaliar-doacao.png",
+      "fullpage/FoodBridge/estatisticasDoador.png",
+    ],
     githubUrl:
       "https://github.com/ICEI-PUC-Minas-PPLES-TI/plf-es-2025-1-ti2-1372100-food-bridge",
-    demoUrl: "https://www.foodbridge.site/", 
+    demoUrl: "https://www.foodbridge.site/",
     data: "2025",
   },
 ];

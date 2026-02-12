@@ -5,6 +5,7 @@ export interface Projeto {
   descricaoCompleta?: string;
   tecnologias: string[];
   imagem: string;
+  imagens?: string[];
   githubUrl?: string;
   demoUrl?: string;
   data: string;

@@ -8,7 +8,7 @@
   --color-css: var(--css);
   --color-js: var(--js);
   --color-react: var(--react);
-  --color-nextjs: var(--nextjs);  
+  --color-nextjs: var(--nextjs);
   --color-tailwind: var(--tailwind);
   --color-nodejs: var(--nodejs);
   --color-pg: var(--pg);
@@ -65,20 +65,20 @@
 }
 
 :root {
-  --html: #FAD5CC;
-  --css: #CFE8FA;
-  --js: #FBF6D3;
-  --react: #E5F5FF;
-  --nextjs: #D0D0D0;
-  --tailwind: #E0F2FE;
-  --nodejs: #D6EDD5;
-  --pg: #D4E6F4;
-  --mysql: #FAE9CE;
-  --java: #FCE6E4;
-  --figma: #EEE1FF;
-  --git: #F4E1D2;
-  --github: #E0E0E0;
-  --border-bar: #DDC2FF;
+  --html: #fad5cc;
+  --css: #cfe8fa;
+  --js: #fbf6d3;
+  --react: #e5f5ff;
+  --nextjs: #d0d0d0;
+  --tailwind: #e0f2fe;
+  --nodejs: #d6edd5;
+  --pg: #d4e6f4;
+  --mysql: #fae9ce;
+  --java: #fce6e4;
+  --figma: #eee1ff;
+  --git: #f4e1d2;
+  --github: #e0e0e0;
+  --border-bar: #ddc2ff;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -154,4 +154,43 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Pink scrollbar for modal */
+.modal-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 122, 180, 0.9) transparent;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-scroll::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.modal-scroll::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 9999px;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff9acb, #ff5ea3);
+  border-radius: 9999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+.modal-scroll::-webkit-scrollbar-thumb:hover {
+  filter: brightness(0.95);
+}
+
+.dark .modal-scroll {
+  scrollbar-color: rgba(255, 90, 140, 0.9) transparent;
+}
+
+.dark .modal-scroll::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff7ab6, #ff4f95);
 }

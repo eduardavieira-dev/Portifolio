@@ -1,6 +1,6 @@
 "use client";
-import { Github, ExternalLink, X, Calendar, Sparkles } from "lucide-react";
-import Image from "next/image";
+import { Github, ExternalLink, X, Calendar, Images } from "lucide-react";
+import { useState } from "react";
 import { Projeto } from "@/types/projeto";
 
 interface ModalProjetoProps {
@@ -11,33 +11,26 @@ interface ModalProjetoProps {
 export default function ModalProjeto({ projeto, onClose }: ModalProjetoProps) {
   if (!projeto) return null;
 
+  const [mostrarGaleria, setMostrarGaleria] = useState(false);
+  const [imagemSelecionada, setImagemSelecionada] = useState<string | null>(
+    null,
+  );
+
   return (
     <div
       className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <div
-        className="bg-background border-2 border-pink-300 dark:border-pink-400/50 rounded-2xl max-w-3xl w-full relative shadow-2xl animate-in fade-in zoom-in duration-300"
+        className="bg-background border-2 border-pink-300 dark:border-pink-400/50 rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-scroll modal-scroll relative shadow-2xl animate-in fade-in zoom-in duration-300"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 hover:bg-pink-100 dark:hover:bg-pink-900/30 rounded-full transition-colors z-10 bg-background/80 backdrop-blur-sm"
+          className="sticky top-4 right-4 float-right p-2 border-2 border-pink-300 dark:border-pink-400/90 hover:bg-pink-100 dark:hover:bg-pink-900/90 rounded-full transition-colors z-10 bg-background/80 backdrop-blur-sm"
         >
-          <X size={20} />
+          <X size={20} className="text-pink-500 dark:text-pink-300" />
         </button>
-
-
-        {/* Imagem Grande */}
-        <div className="relative h-56 bg-gradient-to-br from-pink-100 to-purple-100 dark:from-pink-900/20 dark:to-purple-900/20 rounded-t-2xl overflow-hidden">
-          <Image
-            src={`/${projeto.imagem}`}
-            alt={projeto.titulo}
-            fill
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-        </div>
 
         <div className="p-6 md:p-8">
           {/* Header */}
@@ -72,6 +65,47 @@ export default function ModalProjeto({ projeto, onClose }: ModalProjetoProps) {
               ))}
             </div>
           </div>
+          <hr className="my-6 border-t border-foreground/10 dark:border-pink-300/80" />
+          <div>
+            <img
+              src={`/${projeto.imagem}`}
+              alt={projeto.titulo}
+              className="my-4 rounded-md"
+            />
+          </div>
+
+          {projeto.imagens && projeto.imagens.length > 0 && (
+            <div className="mb-6">
+              <button
+                onClick={() => setMostrarGaleria((prev) => !prev)}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-purple-50 dark:bg-pink-900/30 text-purple-400 dark:text-pink-300 rounded-lg text-sm font-medium hover:bg-purple-100 dark:hover:bg-pink-900/50 transition-colors cursor-pointer"
+              >
+                <Images size={16} />
+                {mostrarGaleria
+                  ? "Ocultar imagens"
+                  : `Ver mais imagens (${projeto.imagens.length})`}
+              </button>
+
+              {mostrarGaleria && (
+                <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {projeto.imagens.map((img, index) => (
+                    <button
+                      key={`${img}-${index}`}
+                      type="button"
+                      onClick={() => setImagemSelecionada(img)}
+                      className="group relative overflow-hidden rounded-lg border border-pink-200 dark:border-pink-400/30 text-left"
+                    >
+                      <img
+                        src={`/${img}`}
+                        alt={`${projeto.titulo} ${index + 1}`}
+                        className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
           {/* Botões de Ação */}
           <div className="flex flex-wrap gap-3">
@@ -100,6 +134,33 @@ export default function ModalProjeto({ projeto, onClose }: ModalProjetoProps) {
           </div>
         </div>
       </div>
+
+      {imagemSelecionada && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4"
+          onClick={(e) => {
+            e.stopPropagation();
+            setImagemSelecionada(null);
+          }}
+        >
+          <div
+            className="relative max-h-[90vh] max-w-5xl w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setImagemSelecionada(null)}
+              className="absolute -top-4 -right-4 p-2 rounded-full border-2 border-pink-300 dark:border-pink-400/90 bg-background/90 backdrop-blur hover:bg-pink-100 dark:hover:bg-pink-900/90 transition-colors"
+            >
+              <X size={18} className="text-pink-500 dark:text-pink-300" />
+            </button>
+            <img
+              src={`/${imagemSelecionada}`}
+              alt={projeto.titulo}
+              className="max-h-[90vh] w-full rounded-xl object-contain"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
