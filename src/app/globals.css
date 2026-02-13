@@ -194,3 +194,45 @@
 .dark .modal-scroll::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, #ff7ab6, #ff4f95);
 }
+
+.skill-card {
+  position: relative;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 0.5rem;
+  padding: 1px;
+  background: linear-gradient(
+      90deg,
+      rgba(216, 168, 255, 0.85),
+      rgba(255, 157, 201, 0.8),
+      rgba(233, 76, 139, 0.9),
+      rgba(241, 93, 214, 0.9),
+      rgba(240, 196, 249, 0.8)
+    )
+    0 0 / 200% 200%;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: skill-border-load 1.6s linear infinite;
+}
+
+.skill-card:hover::before,
+.skill-card:focus-visible::before {
+  opacity: 1;
+}
+
+@keyframes skill-border-load {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}

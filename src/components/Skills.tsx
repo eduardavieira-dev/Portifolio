@@ -3,6 +3,9 @@
 import Image from "next/image";
 
 export default function Skills() {
+  const itemClass =
+    "skill-card group border border-gray-200/80 dark:border-neutral-700/80 bg-white/60 dark:bg-neutral-900/30 px-3 py-2 rounded-lg flex gap-4 items-center transition-all duration-300 ease-out hover:-translate-y-0.5 hover:shadow-sm";
+
   return (
     <div className="max-w-7xl p-6 md:p-12 md:px-20 w-full">
       <div className="mb-8">
@@ -11,7 +14,7 @@ export default function Skills() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 font-alt font-semibold text-base">
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-transform  duration-300 ease-in-out">
+        <div className={itemClass}>
           <div className="bg-html dark:bg-orange-700/30 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/html5.svg"
@@ -23,7 +26,7 @@ export default function Skills() {
           </div>
           <p className="">HTML</p>
         </div>
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-css dark:bg-blue-500/20 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/css3.svg"
@@ -35,7 +38,7 @@ export default function Skills() {
           </div>
           <p className="">CSS</p>
         </div>
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-js dark:bg-yellow-500/30 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/javascript.svg"
@@ -47,7 +50,7 @@ export default function Skills() {
           </div>
           <p className="">Java Script</p>
         </div>
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-nodejs dark:bg-green-200/70 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/node.svg"
@@ -59,7 +62,7 @@ export default function Skills() {
           </div>
           <p className="">Node JS</p>
         </div>
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-mysql dark:bg-yellow-400/20 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/mysql.svg"
@@ -71,7 +74,7 @@ export default function Skills() {
           </div>
           <p className="">MySQL</p>
         </div>
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-pg dark:bg-blue-500/20 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/postgresql.svg"
@@ -83,7 +86,7 @@ export default function Skills() {
           </div>
           <p className="">PostgreSQL</p>
         </div>
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-java dark:bg-red-400/20 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/java.svg"
@@ -96,7 +99,7 @@ export default function Skills() {
           <p className="">Java</p>
         </div>
 
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-nextjs dark:bg-gray-600/20 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/nextjs.svg"
@@ -109,7 +112,7 @@ export default function Skills() {
           <p className="">Next.js</p>
         </div>
 
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-react dark:bg-cyan-500/20 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/react.svg"
@@ -122,7 +125,7 @@ export default function Skills() {
           <p className="">React</p>
         </div>
 
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-tailwind dark:bg-sky-400/20 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/tailwindcss.svg"
@@ -135,7 +138,7 @@ export default function Skills() {
           <p className="">Tailwind CSS</p>
         </div>
 
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-github dark:bg-gray-200/30 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/github.svg"
@@ -148,7 +151,7 @@ export default function Skills() {
           <p className="">GitHub</p>
         </div>
 
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-git dark:bg-orange-600/20 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/git.svg"
@@ -160,7 +163,7 @@ export default function Skills() {
           </div>
           <p className="">Git</p>
         </div>
-        <div className="border border-gray-200 dark:border-neutral-700 px-3 py-2 rounded-md flex gap-4 items-center hover:scale-105 transition-all">
+        <div className={itemClass}>
           <div className="bg-figma dark:bg-purple-500/20 p-1.5 md:p-1 rounded">
             <Image
               src="/icones/figma.svg"
