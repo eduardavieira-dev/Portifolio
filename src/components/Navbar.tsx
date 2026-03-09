@@ -1,6 +1,7 @@
 "use client";
 import { Moon, Sun, List, X } from "@phosphor-icons/react";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 export default function Navbar() {
   const [menuAberto, setMenuAberto] = useState(false);
@@ -116,6 +117,15 @@ export default function Navbar() {
             ))}
           </ul>
 
+            {/* 
+            <Link
+              href="/design-system"
+              className="rounded-md border border-pink-200 dark:border-pink-500/40 px-3 py-1.5 text-sm font-alt font-semibold hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-colors"
+            >
+              Design System
+            </Link>
+            */}
+
           <button
             onClick={alternarTema}
             className="ml-2 p-1 hover:text-foreground transition-all duration-300 cursor-pointer"
@@ -161,6 +171,15 @@ export default function Navbar() {
                 </button>
               </li>
             ))}
+            <li>
+              <Link
+                href="/design-system"
+                onClick={() => setMenuAberto(false)}
+                className="block py-2 w-full text-left hover:text-foreground/80 transition-colors font-alt font-semibold"
+              >
+                Design System
+              </Link>
+            </li>
           </ul>
         </div>
       )}
