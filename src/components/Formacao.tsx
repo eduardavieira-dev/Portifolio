@@ -15,14 +15,24 @@ export default function Formacao() {
       periodo: "Março de 2025 - atualmente",
     },
     {
-      titulo: "Projeto de Extensão Elas++",
-      instituicao: "PUC Minas",
+      titulo: "Desenvolvedora e líder no desenvolvimento do site",
+      instituicao: "Elas++",
       periodo: "Agosto de 2025 - atualmente",
     },
     {
-      titulo: "Projeto de Extensão WebTec",
-      instituicao: "PUC Minas",
+      titulo: "Desenvolvedora Full Stack",
+      instituicao: "WebTec Network",
       periodo: "Fevereiro de 2025 - atualmente",
+    },
+    {
+      titulo: "Palestra sobre Design Patterns",
+      instituicao: "PUC Minas",
+      periodo: "Julho de 2025",
+    },
+    {
+      titulo: "Introdução ao Desenvolvimento Front-end para colaboradores da ASSPROM",
+      instituicao: "PUC Minas",
+      periodo: "Março de 2025 - Maio de 2025",
     },
     {
       titulo: "Técnico em Desenvolvimento de Sistemas",
