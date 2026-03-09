@@ -219,6 +219,23 @@ export default function Contato() {
               </p>
             </div>
           </a>
+
+          <a
+            href="https://www.behance.net/eduardavieira50"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-4 p-4 border border-gray-200 dark:border-neutral-700 rounded-lg hover:bg-pink-50 dark:hover:bg-pink-900/20 transition-all"
+          >
+            <div className="w-12 h-12 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center">
+              <span className="font-alt font-bold text-lg text-pink-400 leading-none">Be</span>
+            </div>
+            <div>
+              <p className="font-alt font-semibold">Behance</p>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                Veja meus projetos de design
+              </p>
+            </div>
+          </a>
         </div>
       </div>
     </div>
