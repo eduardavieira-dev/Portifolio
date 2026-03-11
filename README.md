@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Portfólio Eduarda Vieira
 
-First, run the development server:
+[🌐 Acesse meu portfólio online](https://portfolio-eduardavieira.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+![Preview do Portfólio](public/portfolio.png)
+
+Este é o repositório do meu portfólio pessoal, desenvolvido para apresentar meus projetos, habilidades e experiências de forma moderna e responsiva.
+
+## Tecnologias Utilizadas
+
+- [Next.js](https://nextjs.org/) — Framework React para produção
+- [React](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/) — Estilização rápida e responsiva
+
+## Estrutura do Projeto
+
+```
+components.json
+eslint.config.mjs
+next.config.ts
+package.json
+postcss.config.mjs
+README.md
+tsconfig.json
+public/
+	fullpage/
+		FoodBridge/
+		Moneo/
+	icones/
+	portfolio.png
+src/
+	app/
+		globals.css
+		layout.tsx
+		page.tsx
+		design-system/
+			page.tsx
+	components/
+		CardProjeto.tsx
+		Contato.tsx
+		Footer.tsx
+		Formacao.tsx
+		MainPage.tsx
+		ModalProjeto.tsx
+		Navbar.tsx
+		Projetos.tsx
+		Skills.tsx
+		Sobre.tsx
+	data/
+		projetos.ts
+	lib/
+		utils.ts
+	types/
+		projeto.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Como rodar localmente
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone o repositório:**
+	 ```bash
+	 git clone https://github.com/eduardavieira-dev/Portfolio.git
+	 cd Portfolio
+	 ```
+2. **Instale as dependências:**
+	 ```bash
+	 npm install
+	 # ou
+	 yarn install
+	 ```
+3. **Inicie o servidor de desenvolvimento:**
+	 ```bash
+	 npm run dev
+	 # ou
+	 yarn dev
+	 ```
+4. Acesse `http://localhost:3000` no navegador.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Funcionalidades
 
-## Learn More
+- Página inicial com apresentação
+- Seção de projetos com cards interativos
+- Modal com detalhes dos projetos
+- Seção de habilidades e formação
+- Contato com links para redes sociais
+- Layout responsivo e moderno
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O deploy pode ser feito facilmente no [Vercel](https://vercel.com/) ou em qualquer serviço que suporte aplicações Next.js.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Licença
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Este projeto está sob a licença MIT.
